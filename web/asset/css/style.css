@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+body {
+    background-color: #f4f6f6;
+    font-family: "Questrial", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.sidebar {
+    height: 100vh;
+    background-color: #28539c;
+    color: #fff;
+    position: fixed;
+    width: 250px;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000; /* Asegura que el sidebar esté siempre por encima */
+}
+.sidebar a {
+    color: #adb5bd;
+}
+.sidebar a:hover {
+    color: #fff;
+}
+.sidebar .active {
+    background-color: #00ACBA;
+    color: #00163B;
+}
+.main-content {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease-in-out;
+}
+.card-header {
+    background-color: #00163B;
+    color: #FFF;
+}
+.card {
+    margin-bottom: 20px;
+}
+.icon {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+.overview-card {
+    padding: 10px;
+    color: #fff;
+}
+.overview-card h5 {
+    font-size: 1.2rem;
+}
+.navbar {
+    margin-left: 250px;
+    background-color: #fff;
+    transition: margin-left 0.3s ease-in-out;
+}
+.navbar .navbar-brand {
+    color: #000F29;
+}
+.navbar .navbar-brand:hover {
+    color: #00163B;
+}
+.navbar .form-control {
+    background-color: #DBEAFE;
+    color: #fff;
+}
+.bg-cero{
+    background-color: #214380;
+}
+.bg-one {
+    background-color: yellow;
+}
+.bg-two {
+    background-color: blue;
+}
+.bg-three {
+    background-color: rgba(251, 188, 4, 0.5);
+}
+.bg-four {
+    background-color: rgba(251, 188, 4, 0.5);
+}
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    .main-content, .navbar {
+        margin-left: 0;
+    }
+    .navbar {
+        margin-right: 0;
+    }
+}
+.profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.crud-icons i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 0 5px;
+    
+}
+.crud-icons i:hover {
+    color: #000;
+}
+ul{
+    li{
+        list-style: none;
+    }
+}
+@media (max-width: 1200px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    .main-content, .navbar {
+        margin-left: 0;
+    }
+    .navbar {
+        margin-right: 0;
+    }
+}
+.profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.crud-icons i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 0 5px;
+    
+}
+.crud-icons i:hover {
+    color: #000;
+}
+ul{
+    li{
+        list-style: none;
+    }
+}
