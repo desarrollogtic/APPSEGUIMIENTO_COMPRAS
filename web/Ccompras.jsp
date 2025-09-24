@@ -378,6 +378,7 @@
                                             <th style="text-align: center; width: 200px;">Usuario</th>
                                             <th style="text-align: center; width: 150px;">Estado</th>
                                             <th style="text-align: center; width: 250px;">Observación</th>
+                                            <th style="text-align: center; width: 50px;">Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -431,6 +432,12 @@
                                             <td style="text-align: center;"><%= solicitud.getUsuario()%></td>
                                             <td style="text-align: center;"><%= solicitud.getArticulo()%></td>
                                             <td style="text-align: center;"><%= solicitud.getObservacion()%></td>
+                                            <td>
+                                                <button onclick="abrirEstado(<%= solicitud.getId()%>)"
+                                                        style="background: none; border: none; padding: 0; cursor: pointer; font-size: 1.8rem; color: #007bff;">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                         <%
                                                 }
@@ -455,7 +462,9 @@ function mostrarCantidad() {
         });
     });
 }
-
+function abrirEstado(id) {
+           window.open('estados.jsp?id=' + id, 'Formulario de Registro', 'width=300,height=300');
+        }
 window.onload = mostrarCantidad;
 document.getElementById("cantidadInput").addEventListener("input", mostrarCantidad);
 
