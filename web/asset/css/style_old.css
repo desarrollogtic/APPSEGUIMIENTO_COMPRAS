@@ -7,7 +7,7 @@ body {
 }
 .sidebar {
     height: 100vh;
-    background-color:#2f3e63;
+    background-color: #28539c;
     color: #fff;
     position: fixed;
     width: 250px;
@@ -18,12 +18,9 @@ body {
 }
 .sidebar a {
     color: #adb5bd;
-   
 }
 .sidebar a:hover {
-    background-color: #FFF;
-    
-    
+    color: black;
 }
 .sidebar .active {
     background-color: #00ACBA;
@@ -32,7 +29,6 @@ body {
 .main-content {
     margin-left: 250px;
     transition: margin-left 0.3s ease-in-out;
-   /*background-color:#d1d5dc;*/
 }
 .card-header {
     background-color: #00163B;
@@ -47,7 +43,7 @@ body {
 }
 .overview-card {
     padding: 10px;
-    color: #f4f6f6;
+    color: #fff;
 }
 .overview-card h5 {
     font-size: 1.2rem;

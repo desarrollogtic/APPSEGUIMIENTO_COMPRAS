@@ -1,8 +1,9 @@
-<%@page import="controller.RolJpaController"%>
+
 <%@page import="modell.Usuario"%>
-<%@page import="modell.Rol"%>
 <%@page import="controller.UsuarioJpaController"%>
+<%@page import="modell.Rol"%>
 <%@page import="java.util.List"%>
+<%@page import="controller.RolJpaController"%>
 <!doctype html>
 <html lang="es">
   <head>
@@ -33,10 +34,12 @@
                 <img src="asset1/img/fondo.png" width="150px" alt="Ir a otra página">
             </a>
         </div>
+        
         <form class="p-3 mt-3" method="post">
+            <h5><small>Conexión:</small></h5>
             <div class="form-field d-flex align-items-center py-3" >
                 <select name="ro" id="ro" required>
-                    <option value="">Seleccione</option>
+                  <option value="">Seleccione</option>
                     <%
                             RolJpaController rol = new RolJpaController();
                             List<Rol> lista = rol.findRolEntities();

@@ -37,7 +37,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
 body{
-     font-family: "Winky Sans", sans-serif;
+     font-family: "Oswald", sans-serif;
 }
 </style>
 <body>
@@ -188,7 +188,7 @@ body{
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="compras.jsp">Crear usuario</a>
+            <a class="navbar-brand" href="compras.jsp"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -219,7 +219,7 @@ body{
                 <input type="text" name="empleado" id="empleado" class="bi bi-person-check form-control" placeholder="Nombre" required>
             </div>
             <div class="form-field d-flex align-items-center">
-                <input type="password" name="clave" id="clave" class="bi bi-key form-control" placeholder="Contrasena" required>
+                <input type="password" name="clave" id="clave" class="bi bi-key form-control" placeholder="Contraseña" required>
             </div>
             
             <br><br>

@@ -45,7 +45,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
         body{
-            font-family: "Winky Sans", sans-serif;
+            font-family: "Oswald", sans-serif;
         }
     </style>
     <body>
@@ -68,45 +68,32 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
                         <li><a class="dropdown-item" href="dashboard.jsp">Inicio</a></li>
+                            <% if (u != null && u.getROLcodigo() != null && "ADMINISTRADOR".equals(u.getROLcodigo().getNombre())) { %>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="compras.jsp"> 
+                          <i class="bi bi-clipboard-check"></i> Solicitudes de Compras</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="solicitud.jsp">
+                                <i class="bi bi-search"></i> Consulta de Compras
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="requerimiento_compras.jsp">
+                                <i class="bi bi-clipboard-check"></i> Requerimiento a Compras
+                            </a>
+                           
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="Ccompras.jsp" 
+                                <i class="bi bi-search"></i> Consulta de Requerimiento
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
-                <% if (u != null && u.getROLcodigo() != null && "ADMINISTRADOR".equals(u.getROLcodigo().getNombre())) { %>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="compras.jsp" id="overviewDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-clipboard-check"></i> Solicitudes De Compras
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
-                        <li><a class="dropdown-item" href="compras.jsp">Solicitud Compras</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="solicitud.jsp" id="overviewDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-search"></i> Consulta De Compras
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
-                        <li><a class="dropdown-item" href="solicitud.jsp">Consulta Compras</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="requerimiento_compras.jsp" id="overviewDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-clipboard-check"></i> Requerimiento a Compras
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
-                        <li><a class="dropdown-item" href="requerimiento_compras.jsp">Requerimiento</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="Ccompras.jsp" id="overviewDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-search"></i> Consulta De Requerimiento
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
-                        <li><a class="dropdown-item" href="Ccompras.jsp">Consulta</a></li>
-                    </ul>
-                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="cambiarcontraseña.jsp" id="overviewDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
@@ -118,34 +105,22 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="cerrarsecion" id="logoutDropdown" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="cerrarsecion.jsp">
                         <i class="fas fa-sign-out-alt"></i> Cerrar sesión
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="logoutDropdown">
-                        <li><a class="dropdown-item" href="cerrarsecion.jsp">Cerrar sesión</a></li>
-                    </ul>
+                    
                 </li>
                 <% } else if (u != null && u.getROLcodigo() != null && "COMPRAS".equals(u.getROLcodigo().getNombre())) { %>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="compras.jsp" id="overviewDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-clipboard-check"></i> Solicitudes De Compras
+                    <a class="nav-link dropdown-toggle" href="compras.jsp">
+                        <i class="bi bi-clipboard-check"></i> Solicitudes de Compras
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
-                        <li><a class="dropdown-item" href="compras.jsp">Solicitud Compras</a></li>
-                    </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="solicitud.jsp" id="overviewDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-search"></i> Consulta De Compras
+                    <a class="nav-link dropdown-toggle" href="solicitud.jsp">
+                        <i class="bi bi-search"></i> Consulta de Compras
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
-                        <li><a class="dropdown-item" href="solicitud.jsp">Consulta Compras</a></li>
-                    </ul>
-                </li>
-
+                  </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="cambiarcontraseña.jsp" id="overviewDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
@@ -156,23 +131,17 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="cerrarsecion" id="logoutDropdown" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="cerrarsecion.jsp">
                         <i class="fas fa-sign-out-alt"></i> Cerrar sesión
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="logoutDropdown">
-                        <li><a class="dropdown-item" href="cerrarsecion.jsp">Cerrar sesión</a></li>
-                    </ul>
+                    
                 </li>
                 <% } else { %>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="compras.jsp" id="overviewDropdown" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-clipboard-check"></i> Solicitudes De Compras
+                    <a class="nav-link dropdown-toggle" href="compras.jsp">
+                        <i class="bi bi-clipboard-check"></i> Solicitudes de Compras
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="overviewDropdown">
-                        <li><a class="dropdown-item" href="compras.jsp">Solicitud Compras</a></li>
-                    </ul>
+                    
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="cambiarcontraseña.jsp" id="overviewDropdown" role="button"
@@ -184,20 +153,17 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="cerrarsecion" id="logoutDropdown" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="cerrarsecion.jsp">
                         <i class="fas fa-sign-out-alt"></i> Cerrar sesión
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="logoutDropdown">
-                        <li><a class="dropdown-item" href="cerrarsecion.jsp">Cerrar sesión</a></li>
-                    </ul>
+                    
                 </li>
-                <% } %>   
+                <% }%>   
             </ul>
         </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="compras.jsp">Requerimientpo de compras</a>
+                <a class="navbar-brand" href="compras.jsp"></a>
                 <a class="navbar-brand" href="compras.jsp"><img src="https://www.clinicasaludsocial.com/images/logo-full-color.jpg" alt="GIF sin fondo" width="150px" style="background-color: transparent;"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -206,7 +172,7 @@
         </nav>
         <!-- Main Content -->
         <div class="main-content py-5" style="">
-            <div class="container py-5" style=" border-radius: 7px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); background-color:  #f4f6f6;">
+            <div class="container py-5" style=" border-radius: 7px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); background-color: #e5e7eb;;">
                 <h2><img src="asset/icons/seguimiento.gif" alt="GIF sin fondo" width="50px" style="background-color: transparent;"><strong>Requerimiento a Compras</strong></h2>
                 <h4 style="text-align: center;" >CLINICA SALUD SOCIAL S.A.S</h4>
                 <div class="form-container py-3">
