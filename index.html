@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Moderno</title>
+
+  <style>
+    :root{
+      /* Tema claro */
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1e293b;
+      --gray: #64748b;
+      --border: #e5e7eb;
+
+      --azul-oscuro: #434f81;
+      --azul-cielo: #91b7db;
+
+      --shadow: 0 10px 25px rgba(0,0,0,.06);
+      --radius: 18px;
+    }
+
+    /* ================= TEMA OSCURO ================= */
+
+    body.dark{
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f1f5f9;
+      --gray: #94a3b8;
+      --border: #334155;
+
+      --azul-oscuro: #91b7db;
+      --azul-cielo: #5b7fa3;
+
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body{
+      background: var(--bg);
+      color: var(--text);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      transition: .3s ease;
+    }
+
+    .navbar{
+      height:70px;
+      background:var(--card);
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 30px;
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:1000;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-size:1.2rem;
+      font-weight:700;
+    }
+
+    .logo-badge{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      background: var(--azul-oscuro);
+    }
+
+    .navbar-right{
+      display:flex;
+      align-items:center;
+      gap:15px;
+    }
+
+    .search{
+      background:#f1f5f9;
+      border:none;
+      padding:12px 16px;
+      border-radius:12px;
+      width:220px;
+      outline:none;
+    }
+
+    body.dark .search{
+      background:#334155;
+      color:white;
+    }
+
+    .theme-toggle{
+      border:none;
+      background: var(--azul-oscuro);
+      color:white;
+      width:45px;
+      height:45px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:1.1rem;
+      transition:.3s;
+    }
+
+    .theme-toggle:hover{
+      transform:scale(1.05);
+    }
+
+    .profile{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      background: var(--azul-cielo);
+      border:3px solid var(--azul-oscuro);
+    }
+
+    .layout{
+      display:flex;
+      margin-top:70px;
+      flex:1;
+    }
+
+    .sidebar{
+      width:260px;
+      background:var(--card);
+      border-right:1px solid var(--border);
+      padding:30px 20px;
+      position:fixed;
+      top:70px;
+      bottom:0;
+      left:0;
+    }
+
+    .menu-title{
+      font-size:.8rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      color:var(--gray);
+      margin-bottom:20px;
+    }
+
+    .menu{
+      list-style:none;
+    }
+
+    .menu li{
+      margin-bottom:12px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:14px 16px;
+      border-radius:14px;
+      transition:.25s;
+      font-weight:500;
+      position:relative;
+    }
+
+    .menu a::before{
+      content:"";
+      width:5px;
+      height:100%;
+      background: var(--azul-oscuro);
+      position:absolute;
+      left:0;
+      top:0;
+      border-radius:10px;
+      opacity:0;
+      transition:.25s;
+    }
+
+    .menu a:hover{
+      background:#f3f7fc;
+      color:var(--azul-oscuro);
+    }
+
+    body.dark .menu a:hover{
+      background:#334155;
+    }
+
+    .menu a:hover::before{
+      opacity:1;
+    }
+
+    .menu .active{
+      background:#eef5fb;
+      color:var(--azul-oscuro);
+      font-weight:600;
+    }
+
+    body.dark .menu .active{
+      background:#334155;
+    }
+
+    .menu .active::before{
+      opacity:1;
+    }
+
+    .icon{
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background: var(--azul-cielo);
+    }
+
+    .main{
+      margin-left:260px;
+      width:100%;
+      padding:30px;
+    }
+
+    .top-section{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:30px;
+      flex-wrap:wrap;
+      gap:20px;
+    }
+
+    .title h1{
+      font-size:2rem;
+      margin-bottom:8px;
+    }
+
+    .title p{
+      color:var(--gray);
+    }
+
+    .btn{
+      background: var(--azul-oscuro);
+      color:white;
+      border:none;
+      padding:14px 22px;
+      border-radius:14px;
+      cursor:pointer;
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .btn:hover{
+      opacity:.9;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+      gap:22px;
+      margin-bottom:30px;
+    }
+
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+      border-top:5px solid var(--azul-cielo);
+    }
+
+    .card span{
+      color:var(--gray);
+      font-size:.95rem;
+    }
+
+    .card h2{
+      margin-top:10px;
+      font-size:2rem;
+      color:var(--azul-oscuro);
+    }
+
+    .indicator{
+      margin-top:15px;
+      display:inline-block;
+      padding:6px 12px;
+      background:#edf6ff;
+      color:var(--azul-oscuro);
+      border-radius:999px;
+      font-size:.85rem;
+      font-weight:600;
+    }
+
+    body.dark .indicator{
+      background:#334155;
+    }
+
+    .content{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:22px;
+    }
+
+    .panel{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:25px;
+      box-shadow:var(--shadow);
+    }
+
+    .panel h3{
+      margin-bottom:20px;
+      color:var(--azul-oscuro);
+    }
+
+    .chart{
+      height:280px;
+      border-radius:16px;
+      border:2px dashed var(--azul-cielo);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--gray);
+      background:#fafcff;
+    }
+
+    body.dark .chart{
+      background:#0f172a;
+    }
+
+    .activity{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .activity-item{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:14px;
+      border-radius:14px;
+      background:#f8fafc;
+    }
+
+    body.dark .activity-item{
+      background:#334155;
+    }
+
+    .activity-dot{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background: var(--azul-oscuro);
+    }
+
+    footer{
+      margin-left:260px;
+      background:var(--card);
+      border-top:1px solid var(--border);
+      padding:18px 30px;
+      color:var(--gray);
+    }
+
+    @media(max-width:1000px){
+      .content{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:800px){
+
+      .sidebar{
+        width:90px;
+      }
+
+      .sidebar .menu-title{
+        display:none;
+      }
+
+      .menu a span{
+        display:none;
+      }
+
+      .main{
+        margin-left:90px;
+      }
+
+      footer{
+        margin-left:90px;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .sidebar{
+        display:none;
+      }
+
+      .main{
+        margin-left:0;
+      }
+
+      footer{
+        margin-left:0;
+      }
+
+      .search{
+        display:none;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+
+    <div class="logo">
+      <div class="logo-badge"></div>
+      Empresa
+    </div>
+
+    <div class="navbar-right">
+      <input type="text" class="search" placeholder="Buscar..." />
+
+      <!-- BOTÓN TEMA -->
+      <button class="theme-toggle" id="themeBtn">
+        🌙
+      </button>
+
+      <div class="profile"></div>
+    </div>
+
+  </nav>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="menu-title">
+        Menú Principal
+      </div>
+
+      <ul class="menu">
+
+        <li>
+          <a href="#" class="active">
+            <div class="icon"></div>
+            <span>Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <div class="icon"></div>
+            <span>Usuarios</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <div class="icon"></div>
+            <span>Reportes</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <div class="icon"></div>
+            <span>Analíticas</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <div class="icon"></div>
+            <span>Configuración</span>
+          </a>
+        </li>
+
+      </ul>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <section class="top-section">
+
+        <div class="title">
+          <h1>Dashboard General</h1>
+          <p>Resumen de actividad y rendimiento empresarial.</p>
+        </div>
+
+        <button class="btn">
+          Nuevo Reporte
+        </button>
+
+      </section>
+
+      <!-- CARDS -->
+      <section class="cards">
+
+        <div class="card">
+          <span>Ingresos</span>
+          <h2>0</h2>
+          <div class="indicator">0%</div>
+        </div>
+
+        <div class="card">
+          <span>Clientes</span>
+          <h2>0</h2>
+          <div class="indicator">0%</div>
+        </div>
+
+        <div class="card">
+          <span>Proyectos</span>
+          <h2>0</h2>
+          <div class="indicator">0</div>
+        </div>
+
+        <div class="card">
+          <span>Conversión</span>
+          <h2>0%</h2>
+          <div class="indicator">0%</div>
+        </div>
+
+      </section>
+
+      <!-- CONTENT -->
+      <section class="content">
+
+        <div class="panel">
+          <h3>Rendimiento Mensual</h3>
+
+          <div class="chart">
+            Sin datos disponibles
+          </div>
+        </div>
+
+        <div class="panel">
+
+          <h3>Actividad Reciente</h3>
+
+          <div class="activity">
+
+            <div class="activity-item">
+              <div class="activity-dot"></div>
+              0 registros
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-dot"></div>
+              0 reportes
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-dot"></div>
+              0 actualizaciones
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-dot"></div>
+              0 tickets
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Empresa — Dashboard Corporativo
+  </footer>
+
+  <!-- SCRIPT TEMA -->
+  <script>
+    const themeBtn = document.getElementById("themeBtn");
+
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+
+      if(document.body.classList.contains("dark")){
+        themeBtn.textContent = "☀️";
+      } else {
+        themeBtn.textContent = "🌙";
+      }
+    });
+  </script>
+
+</body>
+</html>
